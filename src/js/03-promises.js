@@ -1,4 +1,4 @@
-import 'notiflix';
+import Notiflix from 'notiflix';
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -28,25 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const position = i + 1;
       const promiseDelay = delay + step * i;
 
-      createPromise(2, 1500)
+      createPromise(position, promiseDelay)
         .then(({ position, delay }) => {
-          console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+          Notiflix.Notify.success(
+            `✅ Fulfilled promise ${position} in ${delay}ms`
+          );
         })
         .catch(({ position, delay }) => {
-          console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+          Notiflix.Notify.failure(
+            `❌ Rejected promise ${position} in ${delay}ms`
+          );
         });
-
-      // createPromise(position, promiseDelay)
-      //   .then(({ position, delay }) => {
-      //     notiflix.Notify.success(
-      //       `✅ Fulfilled promise ${position} in ${delay}ms`
-      //     );
-      //   })
-      //   .catch(({ position, delay }) => {
-      //     notiflix.Notify.failure(
-      //       `❌ Rejected promise ${position} in ${delay}ms`
-      //     );
-      //   });
     }
   });
 });
