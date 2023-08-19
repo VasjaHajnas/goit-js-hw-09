@@ -20,7 +20,7 @@ const options = {
     const currentDate = new Date();
 
     if (selectedDate <= currentDate) {
-      Notiflix.Notify.Warning('Please choose a date in the future');
+      Notiflix.Notify.warning('Please choose a date in the future');
     } else {
       startButton.disabled = false;
     }
